@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/login.png" type="image/x-icon">
+    <script>
+        function verificarSenha() {
+            var senha = document.getElementById("senha").value;
+
+            if (senha === "Pretty8068") {
+                window.location.href = "carregando1.html";
+            } else if (senha === "Cliente") {
+                window.location.href = "carregando2.html";
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <h2>LOGIN PRETTY</h2>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite a senha" required>
+        <br>
+        <input type="button" value="Entrar" onclick="verificarSenha()">
+    </form>
+</body>
+</html>

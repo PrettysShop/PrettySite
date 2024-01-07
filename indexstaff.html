@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRETTY SITE - STAFFS</title>
+    <link rel="icon" href="./img/staffs.png" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #menuTopo {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            box-shadow: 0 0px 20px #57869b;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #menuTopo h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        #menuTopo ul {
+            list-style: none;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+        }
+
+        #menuTopo li {
+            margin-right: 15px;
+        }
+
+        #menuTopo a {
+            padding: 6px 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: .5s;
+        }
+
+        #menuTopo a:hover {
+            background-color: #89CFF0;
+            box-shadow: 0 0px 10px #89CFF0;
+        }
+
+        #conteudo {
+            padding: 80px 20px 20px; /* 60px para dar espaço ao menu fixo no topo */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        .ativo {
+            background-color: #89CFF0;
+            box-shadow: 0 0px 10px #89CFF0;
+        }  
+        
+        .commands-section {
+            width: 70%;
+            margin: auto;
+        }
+        
+        h2 {
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .command {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #494949;
+            border-radius: 8px;
+            background-color: #494949;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        pre {
+            margin: 0;
+            background-color: #686868;
+            border: 1px solid #a3a3a3;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+        }
+        
+        p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #fffefe;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ffffff;
+            margin: 10px 0;
+        }
+        
+        #chatButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #89CFF0;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        #chatButton img {
+            width: 40px; /* Ajuste o tamanho da imagem conforme necessário */
+            height: 40px;
+            color: #fff;
+        }
+        
+        /* Adicione o seguinte estilo para o chat */
+        #chat {
+            position: fixed;
+            bottom: 70px;
+            right: 75px;
+            background-color: #5e5e5e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: none;
+            /* Adapte o estilo do chat conforme necessário */
+        }
+        
+        #chat-header {
+            background-color: #89CFF0;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #chat-header button {
+            background-color: #fff;
+            color: #89CFF0;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        #chat-messages {
+            max-height: 200px;
+            max-width: 500px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        #chat-messages p {
+            margin: 5px 0;
+        }
+        
+        #userInput {
+            width: 70%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        
+        #chat button {
+            background-color: #67a8c6;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            margin-left: 3px;
+        }
+
+        input {
+            color: #fff;
+            border-radius: 10px;
+            background-color: #808080;
+            padding: 10px;
+            margin: 10px 0;
+            width: 400px;
+            border: none;
+            outline:none;
+            box-sizing: border-box;
+        }
+
+        input::placeholder{
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="menuTopo">
+        <h1>PRETTY SITE - STAFFS</h1>
+        <nav>
+            <ul>
+                <li><a href="indexstaff.html" class="ativo">Comandos</a></li>
+                <li><a href="homestaff.html">DashBoard</a></li>
+                <li><a href="painelstaff.html">Painel de Controle</a></li>
+                <li><a href="areastaff.html">Área Staffs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="chatButton" onclick="toggleChat()">
+        <img src="./img/messenger.png" alt="Ícone de Chat">
+    </div>
+    
+     <!-- Chat (inicialmente oculto) -->
+    <div id="chat" style="display: none;">
+        <div id="chat-header">
+            <h3>Pretty Bot</h3>
+            <button onclick="closeChat()">Fechar</button>
+        </div>
+        <div id="chat-messages"></div>
+        <input type="text" id="userInput" placeholder="Digite oi pra iniciar...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <div id="conteudo">
+        <div class="commands-section">
+            <h2>Comandos Disponíveis</h2>
+            <hr>
+            <br>
+            <div class="command">
+                <pre><code>P!ajuda</code></pre>
+                <p>Inicia um atendimento e coleta informações do usuário.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!warn @membro</code></pre>
+                <p>Envia um aviso para o usuário mencionado.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!clear &lt;quantidade&gt;</code></pre>
+                <p>Limpa a quantidade especificada de mensagens (somente para usuários com permissão).</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!ticketespera</code></pre>
+                <p>Move o canal para uma categoria específica.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!comandos</code></pre>
+                <p>Mostra os comandos disponíveis.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!status &lt;mensagem&gt;</code></pre>
+                <p>Define o status do pedido.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!ticket</code></pre>
+                <p>Cria um novo ticket de atendimento.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!desativarticket</code></pre>
+                <p>Desativa temporariamente o comando de criação de tickets.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!ativarticket</code></pre>
+                <p>Ativa o comando de criação de tickets novamente.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!send &lt;mensagem&gt;</code></pre>
+                <p>Envia uma mensagem no mesmo canal.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!close</code></pre>
+                <p>Fecha o ticket atual após 10 segundos.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!pix</code></pre>
+                <p>Exibe a chave PIX para pagamentos (somente para administradores).</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!confirmar</code></pre>
+                <p>Confirma uma transferência de pagamento.</p>
+            </div>
+    
+            <div class="command">
+                <pre><code>P!cliente @user</code></pre>
+                <p>Dá um cargo ao cliente mencionado.</p>
+            </div>
+        </div>
+    
+        <script src="script.js"></script>
+        </div>
+    
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
